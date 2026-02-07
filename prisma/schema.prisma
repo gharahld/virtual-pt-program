@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String?
+  role          UserRole  @default(PARENT)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relations
+  children      Child[]
+  sessions      Session[]
+  
+  @@index([email])
+}
+
+model Child {
+  id            String    @id @default(cuid())
+  name          String
+  age           Int?
+  diagnosis     String?
+  notes         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relations
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  programs      ExerciseProgram[]
+  progress      Progress[]
+  
+  @@index([userId])
+}
+
+model ExerciseProgram {
+  id            String    @id @default(cuid())
+  name          String
+  description   String?
+  frequency     String?   // e.g., "3 times per week"
+  duration      String?   // e.g., "4 weeks"
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relations
+  childId       String
+  child         Child     @relation(fields: [childId], references: [id], onDelete: Cascade)
+  exercises     ProgramExercise[]
+  
+  @@index([childId])
+}
+
+model Exercise {
+  id            String    @id @default(cuid())
+  name          String
+  description   String
+  category      String    // e.g., "Strength", "Flexibility", "Balance"
+  videoUrl      String?
+  imageUrl      String?
+  instructions  String[]
+  precautions   String[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relations
+  programs      ProgramExercise[]
+  
+  @@index([category])
+}
+
+model ProgramExercise {
+  id            String    @id @default(cuid())
+  sets          Int       @default(1)
+  reps          Int       @default(10)
+  duration      String?   // e.g., "30 seconds"
+  notes         String?
+  order         Int       @default(0)
+  
+  // Relations
+  programId     String
+  program       ExerciseProgram @relation(fields: [programId], references: [id], onDelete: Cascade)
+  exerciseId    String
+  exercise      Exercise  @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  progress      Progress[]
+  
+  @@unique([programId, exerciseId])
+  @@index([programId])
+  @@index([exerciseId])
+}
+
+model Progress {
+  id            String    @id @default(cuid())
+  completed     Boolean   @default(false)
+  completedAt   DateTime?
+  sets          Int?
+  reps          Int?
+  notes         String?
+  painLevel     Int?      // 0-10 scale
+  difficulty    String?   // "Easy", "Moderate", "Difficult"
+  createdAt     DateTime  @default(now())
+  
+  // Relations
+  childId       String
+  child         Child     @relation(fields: [childId], references: [id], onDelete: Cascade)
+  programExerciseId String
+  programExercise   ProgramExercise @relation(fields: [programExerciseId], references: [id], onDelete: Cascade)
+  
+  @@index([childId])
+  @@index([programExerciseId])
+  @@index([completedAt])
+}
+
+model Session {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token         String    @unique
+  expiresAt     DateTime
+  createdAt     DateTime  @default(now())
+  
+  @@index([userId])
+  @@index([token])
+}
+
+enum UserRole {
+  PARENT
+  THERAPIST
+  ADMIN
+}

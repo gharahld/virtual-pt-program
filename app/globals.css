@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 270 60% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 270 60% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 60% 20%;
+
+    --primary: 270 42% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 20% 95%;
+    --secondary-foreground: 270 42% 38%;
+
+    --muted: 270 20% 96%;
+    --muted-foreground: 270 20% 45%;
+
+    --accent: 270 20% 93%;
+    --accent-foreground: 270 42% 38%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 20% 90%;
+    --input: 270 20% 90%;
+    --ring: 270 42% 38%;
+
+    --radius: 0.5rem;
+
+    --chart-1: 270 42% 38%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 270 50% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 270 50% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 270 50% 5%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 270 42% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 30% 18%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 270 30% 20%;
+    --muted-foreground: 270 20% 65%;
+
+    --accent: 270 30% 20%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 270 30% 22%;
+    --input: 270 30% 22%;
+    --ring: 270 42% 55%;
+
+    --chart-1: 270 42% 55%;
+    --chart-2: 173 58% 50%;
+    --chart-3: 197 37% 40%;
+    --chart-4: 43 74% 70%;
+    --chart-5: 27 87% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Falling Leaves Animation */
+@keyframes fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateX(20px) rotate(5deg);
+  }
+  100% {
+    transform: translateX(-20px) rotate(-5deg);
+  }
+}
