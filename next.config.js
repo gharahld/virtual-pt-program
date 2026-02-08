@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Allow cross-origin requests from local network devices during development
+  allowedDevOrigins: ['10.0.0.199'],
   async headers() {
     return [
       {

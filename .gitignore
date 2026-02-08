@@ -48,7 +48,9 @@ SECURITY.md
 UPDATED_SETUP_GUIDE.md
 
 # Large media files - GitHub has 100MB file size limit
+# Exclude original large .mov files
 *.mov
-*.mp4
 public/videos/*.mov
-public/videos/*.mp4
+
+# Allow optimized videos (they should be under 100MB)
+# public/videos/optimized/*.mp4

@@ -162,8 +162,23 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <footer className="relative py-12 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/exercise_bg.jpg"
+            alt="Footer Background"
+            fill
+            className="object-cover"
+            quality={90}
+            priority={false}
+          />
+          {/* Light overlay for better text contrast */}
+          <div className="absolute inset-0 bg-white/20"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
@@ -174,48 +189,48 @@ export default function Home() {
                   height={32}
                   className="h-8 w-8"
                 />
-                <span className="text-xl font-bold">Virtual PT</span>
+                <span className="text-xl font-bold text-orange-600">Virtual PT</span>
               </div>
-              <p className="text-primary-200">
+              <p className="text-blue-700 font-medium">
                 Empowering parents to support their children's physical therapy journey.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+              <h3 className="font-semibold text-lg mb-4 text-orange-600">Quick Links</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/exercises" className="text-primary-200 hover:text-white transition">
+                  <Link href="/exercises" className="text-blue-700 hover:text-orange-600 transition font-medium">
                     Exercises
                   </Link>
                 </li>
                 <li>
-                  <Link href="/resources" className="text-primary-200 hover:text-white transition">
+                  <Link href="/resources" className="text-blue-700 hover:text-orange-600 transition font-medium">
                     Resources
                   </Link>
                 </li>
                 <li>
-                  <Link href="#about" className="text-primary-200 hover:text-white transition">
+                  <Link href="#about" className="text-blue-700 hover:text-orange-600 transition font-medium">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sign-in" className="text-primary-200 hover:text-white transition">
+                  <Link href="/sign-in" className="text-blue-700 hover:text-orange-600 transition font-medium">
                     Sign In
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold text-lg mb-4">Contact</h3>
-              <p className="text-primary-200">
+              <h3 className="font-semibold text-lg mb-4 text-orange-600">Contact</h3>
+              <p className="text-blue-700 font-medium">
                 Built by TechAction Studio
                 <br />
                 Florida, USA
               </p>
             </div>
           </div>
-          <div className="border-t border-primary-700 mt-8 pt-8 text-center text-primary-300">
-            <p>&copy; 2026 Virtual PT Program. All rights reserved.</p>
+          <div className="border-t border-orange-500/30 mt-8 pt-8 text-center">
+            <p className="text-blue-700 font-semibold">&copy; 2026 Virtual PT Program. All rights reserved.</p>
           </div>
         </div>
       </footer>

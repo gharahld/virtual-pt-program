@@ -1,0 +1,18 @@
+# Exclude large original video files from Vercel deployment
+# Vercel has a 100MB file size limit per file
+public/videos/*.mov
+*.mov
+
+# Allow optimized videos (they should be under 100MB)
+# public/videos/optimized/*.mp4
+
+# Exclude git directory
+.git
+
+# Exclude node_modules (should already be excluded, but being explicit)
+node_modules
+
+# Exclude build artifacts
+.next
+out
+build

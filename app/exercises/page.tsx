@@ -22,7 +22,7 @@ const exercises = {
       ],
       targets: "Head lifting, arm support, early posture",
       ageGroup: "Ages 0–3 Months",
-      videoUrl: "/videos/tummy1.mov",
+      videoUrl: "/videos/optimized/tummy1.mp4",
     },
     {
       id: "side-lying-play",
@@ -36,7 +36,7 @@ const exercises = {
       ],
       targets: "Midline play, trunk muscles",
       ageGroup: "Ages 0–3 Months",
-      videoUrl: "/videos/side_lying2.mov",
+      videoUrl: "/videos/optimized/side_lying2.mp4",
     },
     {
       id: "supported-sitting-head-control",
@@ -49,7 +49,7 @@ const exercises = {
       ],
       targets: "Neck control, eye-hand coordination",
       ageGroup: "Ages 0–3 Months",
-      videoUrl: "/videos/supporting_sitting_with_heard_control3.mov",
+      videoUrl: "/videos/optimized/supporting_sitting_with_heard_control3.mp4",
     },
   ],
   "3-6": [
@@ -65,7 +65,7 @@ const exercises = {
       ],
       targets: "Trunk rotation, mobility",
       ageGroup: "Ages 3–6 Months",
-      videoUrl: "/videos/rolling_practice4.mov",
+      videoUrl: "/videos/optimized/rolling_practice4.mp4",
     },
     {
       id: "tummy-time-on-arms",
@@ -78,7 +78,7 @@ const exercises = {
       ],
       targets: "Arm strength, posture",
       ageGroup: "Ages 3–6 Months",
-      videoUrl: "/videos/tummy_time_on_arms5.mov",
+      videoUrl: "/videos/optimized/tummy_time_on_arms5.mp4",
     },
     {
       id: "supported-sitting-play",
@@ -91,7 +91,7 @@ const exercises = {
       ],
       targets: "Core stability, balance reactions",
       ageGroup: "Ages 3–6 Months",
-      videoUrl: "/videos/supporting_sitting6.mov",
+      videoUrl: "/videos/optimized/supporting_sitting6.mp4",
     },
   ],
   "6-12": [
@@ -106,7 +106,7 @@ const exercises = {
       ],
       targets: "Weight shifting, coordination",
       ageGroup: "Ages 6–12 Months",
-      videoUrl: "/videos/sitting%20to%20hands_and_knees7.mov",
+      videoUrl: "/videos/optimized/sitting%20to%20hands_and_knees7.mp4",
     },
     {
       id: "supported-standing-furniture",
@@ -119,7 +119,7 @@ const exercises = {
       ],
       targets: "Leg strength, upright balance",
       ageGroup: "Ages 6–12 Months",
-      videoUrl: "/videos/supporting_standing8.mov",
+      videoUrl: "/videos/optimized/supporting_standing8.mp4",
     },
     {
       id: "crawling-cruising-games",
@@ -132,7 +132,7 @@ const exercises = {
       ],
       targets: "Mobility, dynamic balance",
       ageGroup: "Ages 6–12 Months",
-      videoUrl: "/videos/crawling_or_cruising9.mov",
+      videoUrl: "/videos/optimized/crawling_or_cruising9.mov",
     },
   ],
 };
@@ -344,6 +344,80 @@ export default function ExercisesPage() {
           </Link>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="relative py-12 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/exercise_bg.jpg"
+            alt="Footer Background"
+            fill
+            className="object-cover"
+            quality={90}
+            priority={false}
+          />
+          {/* Light overlay for better text contrast */}
+          <div className="absolute inset-0 bg-white/20"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <Image
+                  src="/logo-icon.svg"
+                  alt="Virtual PT Icon"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8"
+                />
+                <span className="text-xl font-bold text-orange-600">Virtual PT</span>
+              </div>
+              <p className="text-blue-700 font-medium">
+                Empowering parents to support their children's physical therapy journey.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg mb-4 text-orange-600">Quick Links</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link href="/exercises" className="text-blue-700 hover:text-orange-600 transition font-medium">
+                    Exercises
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/resources" className="text-blue-700 hover:text-orange-600 transition font-medium">
+                    Resources
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/" className="text-blue-700 hover:text-orange-600 transition font-medium">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/sign-in" className="text-blue-700 hover:text-orange-600 transition font-medium">
+                    Sign In
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg mb-4 text-orange-600">Contact</h3>
+              <p className="text-blue-700 font-medium">
+                Built by TechAction Studio
+                <br />
+                Florida, USA
+              </p>
+            </div>
+          </div>
+          <div className="border-t border-orange-500/30 mt-8 pt-8 text-center">
+            <p className="text-blue-700 font-semibold">&copy; 2026 Virtual PT Program. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
 
       {/* Video Modal */}
       {selectedExercise && (
